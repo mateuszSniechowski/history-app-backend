@@ -1,4 +1,5 @@
 const express = require('express');
+const dotenv = require('dotenv');
 const mysql = require('mysql2');
 const cors = require('cors');
 
@@ -6,14 +7,15 @@ const app = express();
 const port = process.env.PORT || 3306;
 app.use(express.json());
 app.use(cors());
+dotenv.config();
 
 app.get('/', (req, res) => res.json('My API is running!'));
 
 const db = mysql.createConnection({
-    host: 'notesv2.csbk9vjnh2fy.eu-north-1.rds.amazonaws.com',
+    host: process.env.HOST,
     user: 'admin',
-    password: 'r0bOj2kbesBQY9NfjuGf',
-    database: 'WorldWarIINotesV2',
+    password: process.env.PASSWD,
+    database: process.env.DATABSE_NAME,
 });
 
 db.connect((err) => {
