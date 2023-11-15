@@ -2,22 +2,12 @@ const express = require('express');
 const dotenv = require('dotenv');
 const mysql = require('mysql2');
 const cors = require('cors');
-const { createProxyMiddleware } = require('http-proxy-middleware');
-
 
 const app = express();
 const port = process.env.PORT || 3306;
 app.use(express.json());
 app.use(cors());
 dotenv.config();
-
-const apiProxy = createProxyMiddleware('/api', {
-    target: 'http://51.20.66.102:3306/notes', 
-    changeOrigin: true,
-    pathRewrite: {
-      '^/api': '',  
-    },
-  });
   
   app.use('/api', apiProxy);
 
