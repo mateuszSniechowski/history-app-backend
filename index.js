@@ -12,7 +12,7 @@ app.use(cors());
 dotenv.config();
 
 const apiProxy = createProxyMiddleware('/api', {
-    target: 'http://localhost:3306', 
+    target: 'http://51.20.66.102:3306/notes', 
     changeOrigin: true,
     pathRewrite: {
       '^/api': '',  
