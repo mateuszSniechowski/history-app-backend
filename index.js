@@ -9,8 +9,6 @@ app.use(express.json());
 app.use(cors());
 dotenv.config();
   
-  app.use('/api', apiProxy);
-
 app.get('/', (req, res) => res.json('My API is running!'));
 
 const db = mysql.createConnection({
